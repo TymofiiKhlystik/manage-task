@@ -16,6 +16,14 @@ class Position(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
 
+class Worker(AbstractUser):
+    position = models.ForeignKey(Position, on_delete=models.CASCADE, related_name='workers')
+    username = models.CharField(max_length=255, unique=True)
+    email = models.EmailField(max_length=255, unique=True)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+
+
 class Task(models.Model):
     class Priority(models.TextChoices):
         URGENT = "urgent", "Urgent"
@@ -31,12 +39,4 @@ class Task(models.Model):
         default=Priority.LOW,
     )
     task_type = models.ForeignKey(TaskType, on_delete=models.CASCADE, related_name='tasks')
-    assignees = models.ManyToManyField(User)
-
-
-class Worker(AbstractUser):
-    position = models.ForeignKey(Position, on_delete=models.CASCADE, related_name='workers')
-    username = models.CharField(max_length=255, unique=True)
-    email = models.EmailField(max_length=255, unique=True)
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
+    assignees = models.ManyToManyField(Worker)
