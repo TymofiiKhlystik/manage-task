@@ -1,0 +1,117 @@
+[
+  {
+    "model": "task_system.task",
+    "fields": {
+      "name": "Fix login bug",
+      "description": "Помилка при вході в систему",
+      "deadline": "2025-10-25T12:00:00Z",
+      "is_complete": true,
+      "priority": "urgent",
+      "task_type": 1,
+      "team": 1
+    }
+  },
+  {
+    "model": "task_system.task",
+    "fields": {
+      "name": "Add search feature",
+      "description": "Потрібно додати пошук по сайту",
+      "deadline": "2025-10-30T12:00:00Z",
+      "is_complete": false,
+      "priority": "high",
+      "task_type": 2,
+      "team": 1
+    }
+  },
+  {
+    "model": "task_system.task",
+    "fields": {
+      "name": "Research new framework",
+      "description": "Вивчити новий фреймворк для проекту",
+      "deadline": "2025-11-05T12:00:00Z",
+      "is_complete": true,
+      "priority": "low",
+      "task_type": 3
+    }
+  },
+  {
+    "model": "task_system.task",
+    "fields": {
+      "name": "QA login flow",
+      "description": "Перевірити весь логін-флоу",
+      "deadline": "2025-10-28T12:00:00Z",
+      "is_complete": false,
+      "priority": "high",
+      "task_type": 4
+    }
+  },
+  {
+    "model": "task_system.task",
+    "fields": {
+      "name": "Refactor dashboard",
+      "description": "Оптимізувати код дашборду",
+      "deadline": "2025-11-01T12:00:00Z",
+      "is_complete": true,
+      "priority": "low",
+      "task_type": 6
+    }
+  },
+  {
+    "model": "task_system.task",
+    "fields": {
+      "name": "Design new logo",
+      "description": "Створити новий логотип для проекту",
+      "deadline": "2025-10-27T12:00:00Z",
+      "is_complete": false,
+      "priority": "high",
+      "task_type": 5
+    }
+  },
+  {
+    "model": "task_system.task",
+    "fields": {
+      "name": "Fix bug in payment",
+      "description": "Помилка при оплаті товару",
+      "deadline": "2025-10-26T12:00:00Z",
+      "is_complete": true,
+      "priority": "urgent",
+      "task_type": 1
+    }
+  },
+  {
+    "model": "task_system.task",
+    "fields": {
+      "name": "Implement notifications",
+      "description": "Додати push-повідомлення",
+      "deadline": "2025-11-03T12:00:00Z",
+      "is_complete": false,
+      "priority": "high",
+      "task_type": 2,
+      "team": 1
+    }
+  },
+  {
+    "model": "task_system.task",
+    "fields": {
+      "name": "Database optimization",
+      "description": "Оптимізувати запити до бази",
+      "deadline": "2025-11-04T12:00:00Z",
+      "is_complete": true,
+      "priority": "high",
+      "task_type": 6,
+      "team": 1
+    }
+  },
+  {
+    "model": "task_system.task",
+    "fields": {
+      "name": "Frontend bug fixes",
+      "description": "Виправити дрібні баги на фронтенді",
+      "deadline": "2025-10-29T12:00:00Z",
+      "is_complete": false,
+      "priority": "low",
+      "task_type": 1,
+      "team": 1
+    }
+  }
+]

@@ -17,11 +17,28 @@ class Position(models.Model):
 
 
 class Worker(AbstractUser):
-    position = models.ForeignKey(Position, on_delete=models.CASCADE, related_name='workers')
+    position = models.ForeignKey(
+        Position,
+        on_delete=models.CASCADE,
+        related_name="workers"
+    )
     username = models.CharField(max_length=255, unique=True)
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return (f"Username:{self.username}"
+                f"First Name:{self.first_name}"
+                f"Last Name:{self.last_name}"
+                f"Position:{self.position.name}")
+
+
+
+class Team(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    workers = models.ManyToManyField(Worker, related_name="teams")
 
 
 class Task(models.Model):
@@ -30,7 +47,7 @@ class Task(models.Model):
         HIGH = "high", "High"
         LOW = "low", "Low"
     name = models.CharField(max_length=255)
-    description =models.TextField()
+    description = models.TextField()
     deadline = models.DateTimeField()
     is_complete = models.BooleanField(default=False)
     priority = models.CharField(
@@ -38,5 +55,12 @@ class Task(models.Model):
         choices=Priority.choices,
         default=Priority.LOW,
     )
-    task_type = models.ForeignKey(TaskType, on_delete=models.CASCADE, related_name='tasks')
-    assignees = models.ManyToManyField(Worker)
+    task_type = models.ForeignKey(TaskType, on_delete=models.CASCADE, related_name="tasks")
+    assignees = models.ManyToManyField(Worker, blank=True, related_name="assignees")
+    team = models.ForeignKey(
+        Team,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='tasks'
+    )
