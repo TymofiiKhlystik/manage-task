@@ -23,4 +23,9 @@ def index(request: HttpRequest) -> HttpResponse:
 
 class TaskListView(generic.ListView):
     model = Task
-    template_name = "task_system/task-list.html"
+    template_name = "task_system/task_list.html"
+    ordering = ["is_complete", "-priority"]
+
+
+class TaskDetailView(generic.DetailView):
+    model = Task

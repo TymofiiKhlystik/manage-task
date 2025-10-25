@@ -64,3 +64,10 @@ class Task(models.Model):
         blank=True,
         related_name='tasks'
     )
+
+    def priority_badge_class(self):
+        return {
+            self.Priority.URGENT: "priority-urgent",
+            self.Priority.HIGH: "priority-high",
+            self.Priority.LOW: "priority-low",
+        }.get(self.priority, "priority-low")
