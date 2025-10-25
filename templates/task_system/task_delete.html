@@ -1,0 +1,19 @@
+{% include "includes/navigation.html" %}
+{% include "layouts/base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="card shadow-sm p-4">
+    <h3 class="mb-3" style="color:#d9534f;">Confirm Delete Task</h3>
+    <p>Are you sure you want to delete the task: <strong>{{ task.name }}</strong>?</p>
+
+    <form method="post" class="d-flex gap-2">
+      {% csrf_token %}
+      <input type="submit" value="Yes, delete this Task" 
+             class="btn btn-sm bg-gradient-primary mb-0 me-1 mt-2 mt-md-0" style="color:white;">
+      <a href="{% url 'task-detail' task.id %}" 
+         class="btn btn-secondary btn-sm mb-0 me-1 mt-2 mt-md-0">Cancel</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

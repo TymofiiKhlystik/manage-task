@@ -8,7 +8,7 @@
   <h2 class="mb-4">List Tasks</h2>
 
   <table class="table table-striped table-hover shadow-sm">
-    <thead class="table-dark">
+    <thead class="bg-gradient-primary" style="color:white;">
     <tr>
       <th>ID</th>
       <th>Name task</th>
@@ -28,18 +28,20 @@
         <td>{{ task.get_priority_display }}</td>
         <td>{{ task.team.name|default:"-" }}</td>
         <td>
-          {% if task.team and task.team.workers.exists %}
+          {% if task.team or task.team.workers.exists %}
             {% for worker in task.team.workers.all %}
               {{ worker.first_name }} {{ worker.last_name }}
               <br>
             {% endfor %}
           {% elif task.assignees.exists %}
             {% for worker in task.assignees.all %}
-              <span class="badge bg-">{{ worker.first_name }} {{ worker.last_name }}</span>
+              {{ worker.first_name }} {{ worker.last_name }}
               <br>
             {% endfor %}
           {% else %}
-            <span class="text-muted">None</span>
+            <div style="color:#d92163; font-weight:bold; padding:5px; border:1px solid #d92163; display:inline-block;">
+        Task not taken
+      </div>
           {% endif %}
         </td>
         <td>

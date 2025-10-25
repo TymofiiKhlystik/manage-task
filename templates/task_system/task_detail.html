@@ -31,7 +31,7 @@
 
       .priority-urgent {
           background: #ffe3e3;
-          color: #b30000;
+          color: #d92063;
       }
 
       .priority-high {
@@ -80,7 +80,7 @@
 
     <!-- Priority -->
     <p>
-      <span class="badge-priority {{ task.priority_badge_class }}">{{ task.get_priority_display }}</span>
+      <span class="badge-priority {{ task.priority_badge_class }}">Priority : {{ task.get_priority_display }}</span>
     </p>
 
     <!-- Description -->
@@ -108,7 +108,8 @@
       <li class="list-group-item">
         <strong>Worker:</strong> {% if task.assignees.all %}
         {% for worker in task.assignees.all %}
-          <span class="badge bg-primary">{{ worker.first_name }} {{ worker.last_name }}</span>
+          {{ worker.first_name }} {{ worker.last_name }}
+          <br>
         {% empty %}
           <span class="text-muted">None</span>
         {% endfor %}
@@ -121,25 +122,25 @@
     <!-- Buttons -->
     <div class="d-flex gap-2">
       <!-- Left  Buttons -->
-      <a href="#" class="btn btn-primary">
-        <i class="fas fa-pen"></i> EDIT
+      <a href="{% url 'task-update' task.id %}" class="btn btn-primary">
+        <i class="fas fa-pen"></i> Update
       </a>
+      {% if task.is_complete %}
+      {% else %}
+        <a href="{% url 'task-done' task.id %}" class="btn btn-success">
+          <i class="fas fa-check"></i> Done
+        </a>
+      {% endif %}
 
-      <a href="#" class="btn btn-success">
-        <i class="fas fa-check"></i> Done
-      </a>
-      
       <a href="{% url 'task-list' %}" class="btn btn-secondary">
-        <i class="fas fa-arrow-left"></i> Назад до списку
+        <i class="fas fa-arrow-left"></i> Back to list
       </a>
 
       <!-- Відступ між лівими і правими кнопками -->
       <div class="ms-auto d-flex gap-2">
-        <a href="#" class="btn btn-danger">
+        <a href="{% url 'task-delete' task.id %}" class="btn btn-danger">
           <i class="fas fa-trash"></i> Delete
         </a>
-
-
       </div>
     </div>
 

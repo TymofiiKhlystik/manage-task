@@ -28,10 +28,10 @@ class Worker(AbstractUser):
     last_name = models.CharField(max_length=255)
 
     def __str__(self):
-        return (f"Username:{self.username}"
-                f"First Name:{self.first_name}"
-                f"Last Name:{self.last_name}"
-                f"Position:{self.position.name}")
+        return (
+            f"{self.first_name} - {self.last_name} > "
+            f"Position: {self.position.name}"
+        )
 
 
 
@@ -39,6 +39,9 @@ class Team(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     workers = models.ManyToManyField(Worker, related_name="teams")
+
+    def __str__(self):
+        return self.name
 
 
 class Task(models.Model):
