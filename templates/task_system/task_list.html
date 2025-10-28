@@ -40,8 +40,8 @@
             {% endfor %}
           {% else %}
             <div style="color:#d92163; font-weight:bold; padding:5px; border:1px solid #d92163; display:inline-block;">
-        Task not taken
-      </div>
+              Task not taken
+            </div>
           {% endif %}
         </td>
         <td>
@@ -58,5 +58,9 @@
       </tr>
     {% endfor %}
     </tbody>
-  </table>
+  </table>{% if is_paginated %}
+  {% include "includes/pagination.html" %}
+{% endif %}
+
+
 {% endblock %}

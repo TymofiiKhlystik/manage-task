@@ -27,6 +27,7 @@ class TaskListView(generic.ListView):
     model = Task
     template_name = "task_system/task_list.html"
     ordering = ["is_complete", "-priority"]
+    paginate_by = 2
 
 
 class TaskDetailView(generic.DetailView):

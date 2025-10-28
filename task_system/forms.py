@@ -3,8 +3,10 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, Submit, Field
 from crispy_bootstrap5.bootstrap5 import BS5Accordion
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 from .models import Task
+
 
 class TaskForm(forms.ModelForm):
     assignees = forms.ModelMultipleChoiceField(
@@ -13,6 +15,7 @@ class TaskForm(forms.ModelForm):
         required=False,
         label="Workers"
     )
+
     class Meta:
         model = Task
         fields = '__all__'
@@ -26,12 +29,21 @@ class TaskForm(forms.ModelForm):
             }),
             'is_complete': forms.CheckboxInput(attrs={
                 'class': 'form-check-input',
-            })
+            }),
+            'deadline': forms.DateTimeInput(attrs={
+                'class': 'form-control bg-light border border-dark',
+                'type': 'datetime-local'
+            }),
         }
+
+    def clean_deadline(self):
+        deadline = self.cleaned_data.get('deadline')
+        if deadline and deadline < timezone.now():
+            raise forms.ValidationError("Deadline cannot be in the past!")
+        return deadline
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Save', css_class='btn btn-primary'))
