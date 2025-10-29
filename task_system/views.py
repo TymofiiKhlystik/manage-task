@@ -3,8 +3,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 
-from task_system.forms import TaskForm
-from task_system.models import Worker, Task, TaskType, Position
+from task_system.forms import TaskForm, TeamForm
+from task_system.models import Worker, Task, TaskType, Position, Team
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -27,7 +27,7 @@ class TaskListView(generic.ListView):
     model = Task
     template_name = "task_system/task_list.html"
     ordering = ["is_complete", "-priority"]
-    paginate_by = 2
+    paginate_by = 8
 
 
 class TaskDetailView(generic.DetailView):
@@ -61,3 +61,34 @@ def mark_task_done(request, pk):
     task.is_complete = True
     task.save()
     return redirect(reverse('task-detail', args=[task.id]))
+
+
+class TeamListView(generic.ListView):
+    model = Team
+    template_name = "task_system/team_list.html"
+
+
+class TeamCreateView(generic.CreateView):
+    model = Team
+    form_class = TeamForm
+    template_name = 'task_system/team_form.html'
+
+
+class TeamDetailView(generic.DetailView):
+    model = Team
+    success_url = reverse_lazy('team-list')
+    template_name = "task_system/team_detail.html"
+
+
+class TeamUpdateView(generic.UpdateView):
+    model = Team
+    form_class = TeamForm
+
+    def get_success_url(self):
+        return reverse_lazy('team-detail', args=[self.object.id])
+
+
+class TeamDeleteView(generic.DeleteView):
+    model = Team
+    template_name = "task_system/team_delete.html"
+    success_url = reverse_lazy("team-list")

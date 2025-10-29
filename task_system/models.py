@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser, User
 from django.db import models
+from django.urls import reverse
 
 
 class TaskType(models.Model):
@@ -36,12 +37,15 @@ class Worker(AbstractUser):
 
 
 class Team(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     description = models.TextField()
     workers = models.ManyToManyField(Worker, related_name="teams")
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("team-detail", kwargs={"pk": self.pk})
 
 
 class Task(models.Model):

@@ -74,12 +74,12 @@
         <div class="info-horizontal bg-gradient-primary border-radius-xl d-block d-md-flex p-4">
           <i class="material-icons text-white text-3xl">flag</i>
           <div class="ps-0 ps-md-3 mt-3 mt-md-0">
-            <h5 class="text-white">Create Team</h5>
+            <a href="{% url 'team-create' %}"><h5 class="text-white">Create Team</h5></a> 
             <p class="text-white">Create a team to work more effectively
               building your own project.</p>
-            <a href="https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit"
+            <a href="{% url 'team-list' %}"
                class="text-white icon-move-right">
-              Let's start
+              List teams
               <i class="fas fa-arrow-right text-sm ms-1"></i>
             </a>
           </div>
@@ -158,5 +158,3 @@
     }
 </script>
 </body>
-
-</html>

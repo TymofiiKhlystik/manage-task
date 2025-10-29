@@ -5,7 +5,7 @@ from crispy_bootstrap5.bootstrap5 import BS5Accordion
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 
-from .models import Task
+from .models import Task, Team
 
 
 class TaskForm(forms.ModelForm):
@@ -63,6 +63,45 @@ class TaskForm(forms.ModelForm):
                     Field('task_type', template="bootstrap5/field.html"),
                     Field('assignees', template="bootstrap5/field.html"),
                     Field('team', template="bootstrap5/field.html")
+                )
+            )
+        )
+
+
+class TeamForm(forms.ModelForm):
+    workers = forms.ModelMultipleChoiceField(
+        queryset=get_user_model().objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+        label="Workers"
+    )
+
+    class Meta:
+        model = Team
+        fields = '__all__'
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control bg-light border border-dark',
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control bg-light border border-dark',
+                'rows': 4
+            }),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Save', css_class='btn btn-primary'))
+
+        self.helper.layout = Layout(
+            BS5Accordion(
+                Fieldset(
+                    "Team Info",
+                    Field('name', template="bootstrap5/field.html"),
+                    Field('description', template="bootstrap5/field.html"),
+                    Field('workers', template="bootstrap5/field.html"),
                 )
             )
         )

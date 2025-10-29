@@ -8,10 +8,16 @@ from task_system.views import (
     TaskUpdateView,
     TaskDeleteView,
     mark_task_done,
+    TeamListView,
+    TeamCreateView,
+    TeamDetailView,
+    TeamUpdateView,
+    TeamDeleteView,
 )
 
 
 urlpatterns = [
+    # ---- TASKS ----
     path("", index, name="index"),
     path("list/", TaskListView.as_view(), name="task-list"),
     path("task_detail/<int:pk>/", TaskDetailView.as_view(), name="task-detail"),
@@ -19,5 +25,10 @@ urlpatterns = [
     path("task_update/<int:pk>/update/", TaskUpdateView.as_view(), name="task-update"),
     path("task_delete/<int:pk>/delete/", TaskDeleteView.as_view(), name="task-delete"),
     path('task/<int:pk>/done/', mark_task_done, name='task-done'),
-
+    # ---- TEAMS ----
+    path('teams/', TeamListView.as_view(), name="team-list"),
+    path('team/create/', TeamCreateView.as_view(), name="team-create"),
+    path('team/<int:pk>/', TeamDetailView.as_view(), name="team-detail"),
+    path("teams/<int:pk>/update/", TeamUpdateView.as_view(), name="team-update"),
+    path("teams/<int:pk>/delete/", TeamDeleteView.as_view(), name="team-delete"),
 ]
