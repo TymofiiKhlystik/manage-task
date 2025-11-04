@@ -3,6 +3,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, Submit, Field
 from crispy_bootstrap5.bootstrap5 import BS5Accordion
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
 from django.utils import timezone
 
 from .models import Task, Team, Worker
@@ -35,12 +36,6 @@ class TaskForm(forms.ModelForm):
                 'type': 'datetime-local'
             }),
         }
-
-    def clean_deadline(self):
-        deadline = self.cleaned_data.get('deadline')
-        if deadline and deadline < timezone.now():
-            raise forms.ValidationError("Deadline cannot be in the past!")
-        return deadline
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -132,3 +127,26 @@ class WorkerUpdateForm(forms.ModelForm):
         # зберегти many-to-many вручну
         worker.teams.set(self.cleaned_data["teams"])
         return worker
+
+
+class WorkerRegisterForm(UserCreationForm):
+    class Meta:
+        model = Worker
+        fields = [
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+            "position",
+            "password1",
+            "password2",
+        ]
+        labels = {
+            "username": "Username",
+            "email": "Email",
+            "first_name": "First name",
+            "last_name": "Last name",
+            "position": "Position",
+            "password1": "Password",
+            "password2": "Confirm password",
+        }
