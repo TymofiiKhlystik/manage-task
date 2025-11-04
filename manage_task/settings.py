@@ -132,6 +132,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'task_system.Worker'
 
+LOGIN_REDIRECT_URL = '/task_system/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"

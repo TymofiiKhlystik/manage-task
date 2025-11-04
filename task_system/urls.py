@@ -14,7 +14,9 @@ from task_system.views import (
     TeamDetailView,
     TeamUpdateView,
     TeamDeleteView,
-    WorkerList, WorkerUpdateView,
+    WorkerList,
+    WorkerUpdateView,
+    RegisterView,
 )
 
 
@@ -36,4 +38,6 @@ urlpatterns = [
     # ----WORKERS----
     path("workers/", WorkerList.as_view(), name="worker-list"),
     path("workers/update/", WorkerUpdateView.as_view(), name="worker-update"),
+    # ----REGISTER----
+    path("register/", RegisterView.as_view(), name="register"),
 ]
