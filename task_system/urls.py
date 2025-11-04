@@ -1,5 +1,6 @@
 from django.urls import path
 
+from task_system.models import Worker
 from task_system.views import (
     index,
     TaskListView,
@@ -13,6 +14,7 @@ from task_system.views import (
     TeamDetailView,
     TeamUpdateView,
     TeamDeleteView,
+    WorkerList, WorkerUpdateView,
 )
 
 
@@ -31,4 +33,7 @@ urlpatterns = [
     path('team/<int:pk>/', TeamDetailView.as_view(), name="team-detail"),
     path("teams/<int:pk>/update/", TeamUpdateView.as_view(), name="team-update"),
     path("teams/<int:pk>/delete/", TeamDeleteView.as_view(), name="team-delete"),
+    # ----WORKERS----
+    path("workers/", WorkerList.as_view(), name="worker-list"),
+    path("workers/update/", WorkerUpdateView.as_view(), name="worker-update"),
 ]

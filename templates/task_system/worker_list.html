@@ -1,0 +1,55 @@
+{% include 'includes/navigation.html' %}
+{% include 'layouts/base.html' %}
+
+{% block title %}List Workers{% endblock %}
+
+{% block content %}
+  <h2 class="mb-4">List of Workers</h2>
+
+  <table class="table table-striped table-hover shadow-sm">
+    <thead class="bg-dark text-white">
+    <tr>
+      <th>ID</th>
+      <th>Full Name</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Position</th>
+      <th>Teams</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for worker in worker_list %}
+      <tr>
+        <td>{{ worker.id }}</td>
+        <td>
+          {{ worker.first_name }} {{ worker.last_name }}
+          {% if worker.id == request.user.id %}
+            <span style="color:#d92163; font-weight:bold;">(Me)</span>
+          {% endif %}
+        </td>
+        <td>{{ worker.username }}</td>
+        <td>{{ worker.email }}</td>
+        <td>{{ worker.position.name|default:"-" }}</td>
+        <td>
+          {% if worker.teams.exists %}
+            {% for team in worker.teams.all %}
+              {{ team.name }} <br>
+            {% endfor %}
+          {% else %}
+            <span class="text-muted">-</span>
+          {% endif %}
+        </td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="6" class="text-center text-muted">No workers yet</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  {% if is_paginated %}
+    {% include "includes/pagination.html" %}
+  {% endif %}
+
+{% endblock %}

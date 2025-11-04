@@ -1,9 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 
-from task_system.forms import TaskForm, TeamForm
+from task_system.forms import TaskForm, TeamForm, WorkerUpdateForm
 from task_system.models import Worker, Task, TaskType, Position, Team
 
 
@@ -92,3 +93,23 @@ class TeamDeleteView(generic.DeleteView):
     model = Team
     template_name = "task_system/team_delete.html"
     success_url = reverse_lazy("team-list")
+
+
+class WorkerList(generic.ListView):
+    model = Worker
+    template_name = "task_system/worker_list.html"
+    context_object_name = "worker_list"
+    paginate_by = 10
+
+
+class WorkerUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Worker
+    form_class = WorkerUpdateForm
+    template_name = "task_system/worker_update.html"
+
+    def get_object(self, queryset=None):
+        # редагувати може лише сам себе
+        return self.request.user
+
+    def get_success_url(self):
+        return reverse_lazy("worker-list")

@@ -5,7 +5,7 @@ from crispy_bootstrap5.bootstrap5 import BS5Accordion
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 
-from .models import Task, Team
+from .models import Task, Team, Worker
 
 
 class TaskForm(forms.ModelForm):
@@ -105,3 +105,30 @@ class TeamForm(forms.ModelForm):
                 )
             )
         )
+
+
+class WorkerUpdateForm(forms.ModelForm):
+    teams = forms.ModelMultipleChoiceField(
+        queryset=Team.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False
+    )
+
+    class Meta:
+        model = Worker
+        fields = ["first_name", "last_name", "username", "email", "position", "teams"]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # заповнення чекбоксів поточними командами юзера
+        if self.instance.pk:
+            self.fields["teams"].initial = self.instance.teams.all()
+
+    def save(self, commit=True):
+        worker = super().save(commit=False)
+        if commit:
+            worker.save()
+            self.save_m2m()
+        # зберегти many-to-many вручну
+        worker.teams.set(self.cleaned_data["teams"])
+        return worker
