@@ -8,29 +8,29 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-  <div class="card p-4 shadow-sm">
-    <h3 class="mb-4">
-      {% if object.pk %}Update{% else %}Create{% endif %} Task
-      {% if object.pk %}#{{ object.id }} — {{ object.name }}{% endif %}
-    </h3>
+  <div class="container mt-4">
+    <div class="card p-4 shadow-sm">
+      <h3 class="mb-4">
+        {% if object.pk %}Update{% else %}Create{% endif %} Task
+        {% if object.pk %}#{{ object.id }} — {{ object.name }}{% endif %}
+      </h3>
 
-    <form method="POST">
-      {% csrf_token %}
-      {% crispy form %}
-      
-      <div class="d-flex justify-content mt-3">
-        {% if object.pk %}
-          <a href="{% url 'task-detail' object.id %}" class="btn btn-secondary">
-            <i class="fas fa-arrow-left"></i> Cancel
-          </a>
-        {% else %}
-          <a href="{% url 'task-list' %}" class="btn btn-secondary">
-            <i class="fas fa-arrow-left"></i> Cancel
-          </a>
-        {% endif %}
-      </div>
-    </form>
+      <form method="POST">
+        {% csrf_token %}
+        {% crispy form %}
+
+        <div class="d-flex justify-content mt-3">
+          {% if object.pk %}
+            <a href="{% url 'task-detail' object.id %}" class="btn btn-secondary">
+              <i class="fas fa-arrow-left"></i> Cancel
+            </a>
+          {% else %}
+            <a href="{% url 'task-list' %}" class="btn btn-secondary">
+              <i class="fas fa-arrow-left"></i> Cancel
+            </a>
+          {% endif %}
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 {% endblock %}
