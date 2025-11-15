@@ -4,7 +4,6 @@ from crispy_forms.layout import Layout, Fieldset, Submit, Field
 from crispy_bootstrap5.bootstrap5 import BS5Accordion
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-from django.utils import timezone
 
 from .models import Task, Team, Worker
 
