@@ -1,0 +1,90 @@
+{% include 'includes/navigation.html' %}
+{% include 'layouts/base.html' %}
+
+
+<!DOCTYPE html>
+<html lang="uk">
+<title>Task Detail</title>
+<body>
+
+<div class="container py-4">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Task #{{ task.id }}</li>
+    </ol>
+  </nav>
+  <!-- Task Detail Card -->
+  <div class="card p-4">
+    <!-- Title -->
+    <h3 class="mb-3">
+      Task #{{ task.id }} — {{ task.name }}
+    </h3>
+    <!-- Priority -->
+    <p>
+      <span class="badge-priority {{ task.priority_badge_class }}">Priority : {{ task.get_priority_display }}</span>
+    </p>
+    <!-- Description -->
+    <p class="text-muted">
+      <strong>Description:</strong><br>
+      {{ task.description }}
+    </p>
+    <!-- Info -->
+    <ul class="list-group mb-3">
+      <li class="list-group-item"><strong>Status:</strong>
+        {% if task.is_complete %}
+          <span class="badge bg-success">Done</span>
+        {% else %}
+          <span class="badge bg-warning text-dark">is being done</span>
+        {% endif %}</li>
+      <li class="list-group-item"><strong>Type:</strong> {{ task.task_type }}</li>
+      <li class="list-group-item"><strong>Deadline:</strong> {{ task.deadline }}</li>
+      <li class="list-group-item"><strong>Team:</strong>
+        {% if task.team %}
+          {{ task.team.name }}
+        {% else %}
+          None
+        {% endif %}</li>
+      <li class="list-group-item">
+        <strong>Worker:</strong> {% if task.assignees.all %}
+        {% for worker in task.assignees.all %}
+          {{ worker.first_name }} {{ worker.last_name }}
+          <br>
+        {% empty %}
+          <span class="text-muted">None</span>
+        {% endfor %}
+      {% else %}
+        <span class="text-muted">None</span>
+      {% endif %}
+      </li>
+    </ul>
+
+    <!-- Buttons -->
+    <div class="d-flex gap-2">
+      <!-- Left  Buttons -->
+      <a href="{% url 'task-update' task.id %}" class="btn btn-primary">
+        <i class="fas fa-pen"></i> Update
+      </a>
+      {% if task.is_complete %}
+      {% else %}
+        <a href="{% url 'task-done' task.id %}" class="btn btn-success">
+          <i class="fas fa-check"></i> Done
+        </a>
+      {% endif %}
+
+      <a href="{% url 'task-list' %}" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Back to list
+      </a>
+
+      <!-- Відступ між лівими і правими кнопками -->
+      <div class="ms-auto d-flex gap-2">
+        <a href="{% url 'task-delete' task.id %}" class="btn btn-danger">
+          <i class="fas fa-trash"></i> Delete
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

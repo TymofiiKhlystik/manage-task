@@ -1,0 +1,310 @@
+[
+  {
+    "model": "task_system.position",
+    "pk": 1,
+    "fields": {
+      "name": "Team Lead"
+    }
+  },
+  {
+    "model": "task_system.position",
+    "pk": 2,
+    "fields": {
+      "name": "Junior Developer"
+    }
+  },
+  {
+    "model": "task_system.position",
+    "pk": 3,
+    "fields": {
+      "name": "Designer"
+    }
+  },
+  {
+    "model": "task_system.tasktype",
+    "pk": 1,
+    "fields": {
+      "name": "Backend Development"
+    }
+  },
+  {
+    "model": "task_system.tasktype",
+    "pk": 2,
+    "fields": {
+      "name": "Frontend Development"
+    }
+  },
+  {
+    "model": "task_system.tasktype",
+    "pk": 3,
+    "fields": {
+      "name": "Testing"
+    }
+  },
+  {
+    "model": "task_system.tasktype",
+    "pk": 4,
+    "fields": {
+      "name": "Research"
+    }
+  },
+  {
+    "model": "task_system.tasktype",
+    "pk": 5,
+    "fields": {
+      "name": "Design"
+    }
+  },
+
+  {
+    "model": "task_system.worker",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$hQ3Q0T0gK3pQ0F8Z6B6U0F$V5L1L2Y9B5K6E4J2Q2L8M8T1U2V8W8X2Y2Z8==",
+      "is_superuser": true,
+      "username": "admin",
+      "email": "admin@task.com",
+      "first_name": "Олексій",
+      "last_name": "Адміненко",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2025-11-15T18:00:00Z",
+      "position": 1,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "task_system.worker",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$hQ3Q0T0gK3pQ0F8Z6B6U0F$V5L1L2Y9B5K6E4J2Q2L8M8T1U2V8W8X2Y2Z8==",
+      "is_superuser": false,
+      "username": "user1",
+      "email": "user1@task.com",
+      "first_name": "Марія",
+      "last_name": "Іванова",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-11-15T18:00:00Z",
+      "position": 2,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+
+  {
+    "model": "task_system.team",
+    "pk": 1,
+    "fields": {
+      "name": "Development Team",
+      "description": "Головна команда розробки",
+      "workers": [1, 2]
+    }
+  },
+
+  {
+    "model": "task_system.task",
+    "pk": 1,
+    "fields": {
+      "name": "Fix login bug",
+      "description": "Помилка при вході в систему",
+      "deadline": "2025-10-25T12:00:00Z",
+      "is_complete": true,
+      "priority": "urgent",
+      "task_type": 1,
+      "assignees": [1],
+      "team": 1
+    }
+  },
+  {
+    "model": "task_system.task",
+    "pk": 2,
+    "fields": {
+      "name": "Add search feature",
+      "description": "Потрібно додати пошук по сайту",
+      "deadline": "2025-10-30T12:00:00Z",
+      "is_complete": false,
+      "priority": "high",
+      "task_type": 2,
+      "assignees": [2],
+      "team": 1
+    }
+  },
+  {
+    "model": "task_system.task",
+    "pk": 3,
+    "fields": {
+      "name": "Research new framework",
+      "description": "Вивчити новий фреймворк для проекту",
+      "deadline": "2025-11-05T12:00:00Z",
+      "is_complete": true,
+      "priority": "low",
+      "task_type": 4,
+      "assignees": [1]
+    }
+  },
+  {
+    "model": "task_system.task",
+    "pk": 4,
+    "fields": {
+      "name": "QA login flow",
+      "description": "Перевірити весь логін-флоу",
+      "deadline": "2025-10-28T12:00:00Z",
+      "is_complete": false,
+      "priority": "high",
+      "task_type": 3,
+      "assignees": [2]
+    }
+  },
+  {
+    "model": "task_system.task",
+    "pk": 5,
+    "fields": {
+      "name": "Refactor dashboard",
+      "description": "Оптимізувати код дашборду",
+      "deadline": "2025-11-01T12:00:00Z",
+      "is_complete": true,
+      "priority": "low",
+      "task_type": 1,
+      "assignees": [1, 2]
+    }
+  },
+  {
+    "model": "task_system.task",
+    "pk": 6,
+    "fields": {
+      "name": "Design new logo",
+      "description": "Створити новий логотип для проекту",
+      "deadline": "2025-10-27T12:00:00Z",
+      "is_complete": false,
+      "priority": "high",
+      "task_type": 5,
+      "assignees": [2]
+    }
+  },
+  {
+    "model": "task_system.task",
+    "pk": 7,
+    "fields": {
+      "name": "Fix bug in payment",
+      "description": "Помилка при оплаті товару",
+      "deadline": "2025-10-26T12:00:00Z",
+      "is_complete": true,
+      "priority": "urgent",
+      "task_type": 1,
+      "assignees": [1]
+    }
+  },
+  {
+    "model": "task_system.task",
+    "pk": 8,
+    "fields": {
+      "name": "Implement notifications",
+      "description": "Додати push-повідомлення",
+      "deadline": "2025-11-03T12:00:00Z",
+      "is_complete": false,
+      "priority": "high",
+      "task_type": 2,
+      "assignees": [1, 2],
+      "team": 1
+    }
+  },
+  {
+    "model": "task_system.task",
+    "pk": 9,
+    "fields": {
+      "name": "Database optimization",
+      "description": "Оптимізувати запити до бази",
+      "deadline": "2025-11-04T12:00:00Z",
+      "is_complete": true,
+      "priority": "high",
+      "task_type": 1,
+      "assignees": [1],
+      "team": 1
+    }
+  },
+  {
+    "model": "task_system.task",
+    "pk": 10,
+    "fields": {
+      "name": "Frontend bug fixes",
+      "description": "Виправити дрібні баги на фронтенді",
+      "deadline": "2025-10-29T12:00:00Z",
+      "is_complete": false,
+      "priority": "low",
+      "task_type": 2,
+      "assignees": [2],
+      "team": 1
+    }
+  },
+
+  {
+    "model": "task_system.task",
+    "pk": 11,
+    "fields": {
+      "name": "Code Review: Search Feature",
+      "description": "Переглянути код пошуку перед мерджем у develop гілку.",
+      "deadline": "2025-11-01T15:00:00Z",
+      "is_complete": false,
+      "priority": "high",
+      "task_type": 1,
+      "assignees": [1],
+      "team": 1
+    }
+  },
+  {
+    "model": "task_system.task",
+    "pk": 12,
+    "fields": {
+      "name": "Create new landing page wireframe",
+      "description": "Створити чорновий макет (wireframe) нової цільової сторінки.",
+      "deadline": "2025-11-10T10:00:00Z",
+      "is_complete": false,
+      "priority": "low",
+      "task_type": 5,
+      "assignees": [2]
+    }
+  },
+  {
+    "model": "task_system.task",
+    "pk": 13,
+    "fields": {
+      "name": "Performance testing on mobile",
+      "description": "Провести тестування швидкодії на мобільних пристроях.",
+      "deadline": "2025-11-07T14:30:00Z",
+      "is_complete": false,
+      "priority": "high",
+      "task_type": 3,
+      "assignees": [2],
+      "team": 1
+    }
+  },
+  {
+    "model": "task_system.task",
+    "pk": 14,
+    "fields": {
+      "name": "Setup Continuous Integration (CI)",
+      "description": "Налаштувати автоматизоване тестування на GitHub Actions.",
+      "deadline": "2025-11-15T18:00:00Z",
+      "is_complete": true,
+      "priority": "urgent",
+      "task_type": 1,
+      "assignees": [1],
+      "team": 1
+    }
+  },
+  {
+    "model": "task_system.task",
+    "pk": 15,
+    "fields": {
+      "name": "Finalize User Model Fields",
+      "description": "Перевірити, чи всі необхідні поля (як-от position) додані до Worker моделі.",
+      "deadline": "2025-11-16T23:59:59Z",
+      "is_complete": false,
+      "priority": "urgent",
+      "task_type": 4,
+      "assignees": [1, 2]
+    }
+  }
+]

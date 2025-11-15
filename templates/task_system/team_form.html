@@ -1,0 +1,36 @@
+{% include "includes/navigation.html" %}
+{% include "layouts/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+  {% if object.pk %}Update{% else %}Create{% endif %} Team
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <div class="card p-4 shadow-sm">
+      <h3 class="mb-4">
+        {% if object.pk %}Update{% else %}Create{% endif %} Team
+        {% if object.pk %}#{{ object.id }} — {{ object.name }}{% endif %}
+      </h3>
+
+      <form method="POST">
+        {% csrf_token %}
+        {% crispy form %}
+
+        <div class="d-flex justify-content mt-3">
+          {% if object.pk %}
+            <a href="{% url 'team-detail' object.id %}" class="btn btn-secondary">
+              <i class="fas fa-arrow-left"></i> Cancel
+            </a>
+          {% else %}
+            <a href="{% url 'index' %}" class="btn btn-secondary">
+              <i class="fas fa-arrow-left"></i> Cancel
+            </a>
+          {% endif %}
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
