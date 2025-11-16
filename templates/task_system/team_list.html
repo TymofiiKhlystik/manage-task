@@ -1,0 +1,44 @@
+{% include 'includes/navigation.html' %}
+{% include 'layouts/base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+  <h2 class="mb-4">List Teams</h2>
+
+  <table class="table table-striped table-hover shadow-sm">
+    <thead class="bg-gradient-primary" style="color:white;">
+    <tr>
+      <th>ID</th>
+      <th>Name team</th>
+      <th>Description</th>
+      <th>Workers</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for team in team_list %}
+      <tr>
+        <td><a href="{% url 'team-detail' team.id %}"> {{ team.id }}</a></td>
+        <td>{{ team.name }}</td>
+        <td>{{ team.description }}</td>
+        <td>
+          {% if team.workers.exists %}
+            {% for worker in team.workers.all %}
+              {{ worker.first_name }} {{ worker.last_name }}<br>
+            {% endfor %}
+          {% else %}
+            <span class="text-danger fw-bold">No workers</span>
+          {% endif %}
+        </td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="4" class="text-center text-muted">No teams yet</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>{% if is_paginated %}
+  {% include "includes/pagination.html" %}
+{% endif %}
+
+{% endblock %}

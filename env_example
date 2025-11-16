@@ -1,0 +1,4 @@
+# REQUIRED ENVIRONMENT VARIABLES
+SECRET_KEY=put_your_very_long_and_secure_key_here
+DEBUG=True
+DATABASE_URL=postgres://user:password@host:port/dbname

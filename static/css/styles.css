@@ -1,0 +1,45 @@
+body {
+  background: #f8f9fa;
+  font-family: 'Roboto', sans-serif;
+}
+
+.card {
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.badge-priority {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.priority-urgent {
+  background: #ffe3e3;
+  color: #b30000;
+}
+
+.priority-high {
+  background: #ffe9cc;
+  color: #b35b00;
+}
+
+.priority-low {
+  background: #e6ffed;
+  color: #008a2e;
+}
+
+.icon-btn {
+  text-decoration: none;
+  font-size: 15px;
+  margin-right: 18px;
+}
+
+.icon-btn i {
+  margin-right: 6px;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+}

@@ -1,0 +1,44 @@
+{% include "includes/navigation.html" %}
+{% include "layouts/base.html" %}
+
+{% block title %}
+  Update My Profile
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <div class="card p-4 shadow-sm">
+      <h3 class="mb-4">
+        Update Profile — {{ request.user.first_name }} {{ request.user.last_name }}
+      </h3>
+
+      <form method="POST">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        {% for field in form %}
+          <div class="mb-3">
+            <label class="form-label">{{ field.label }}</label>
+            {{ field }}
+            {% if field.help_text %}
+              <small class="form-text text-muted">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+              <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+
+        <div class="d-flex justify-content-start mt-3">
+          <button type="submit" class="btn btn-primary me-2">
+            <i class="fas fa-save"></i> Save changes
+          </button>
+          <a href="{% url 'worker-list' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Cancel
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
