@@ -1,0 +1,25 @@
+[33m38408f9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m)[m HEAD@{0}: reset: moving to 38408f91a7159ec8b9ec844179970df307111472
+[33m38408f9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m)[m HEAD@{1}: reset: moving to 38408f91a7159ec8b9ec844179970df307111472
+[33m38408f9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m)[m HEAD@{2}: reset: moving to 38408f91a7159ec8b9ec844179970df307111472
+[33mee36e15[m HEAD@{3}: reset: moving to ee36e15098b83466cb8c542256a160544b983724
+[33mee36e15[m HEAD@{4}: reset: moving to ee36e15098b83466cb8c542256a160544b983724
+[33mee36e15[m HEAD@{5}: commit: ✅ Summary of Project Updates
+[33m38408f9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m)[m HEAD@{6}: commit: Add Task-detail page
+[33m4ddb8bc[m HEAD@{7}: commit: Work done with index.html
+[33m3501ade[m HEAD@{8}: commit: Connect crispy-bootstrap5
+[33mc22743d[m HEAD@{9}: commit: create first urls and create first template.
+[33m154d29d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mmain[m[33m)[m HEAD@{10}: checkout: moving from main to develop
+[33m154d29d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mmain[m[33m)[m HEAD@{11}: merge develop: Fast-forward
+[33m9a8ba3d[m HEAD@{12}: checkout: moving from develop to main
+[33m154d29d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mmain[m[33m)[m HEAD@{13}: commit: DB
+[33mf5d6a88[m HEAD@{14}: commit: test
+[33m7de7237[m HEAD@{15}: commit: add new models (Position and Worker) update model Task
+[33m47efa62[m HEAD@{16}: commit (amend): update models.py TaskType and create new model Task
+[33m520dfed[m HEAD@{17}: commit: create model TaskType end
+[33m0566554[m HEAD@{18}: commit: add new empty app tasksystem
+[33m12de623[m HEAD@{19}: commit: add pycache to gitignore
+[33m9a8ba3d[m HEAD@{20}: checkout: moving from main to develop
+[33m9a8ba3d[m HEAD@{21}: commit: Initialisate empty django project with name manage task
+[33me1e5e85[m HEAD@{22}: commit: add .gitignore woth .idea & .venv
+[33m0f7f9ad[m HEAD@{23}: Branch: renamed refs/heads/master to refs/heads/main
+[33m0f7f9ad[m HEAD@{25}: commit (initial): add REDME.md with project name
