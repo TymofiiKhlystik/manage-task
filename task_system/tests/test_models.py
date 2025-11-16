@@ -32,7 +32,7 @@ class WorkerModelTest(TestCase):
             first_name="John",
             last_name="Doe",
             position=self.position,
-            password="test1234"
+            password="test1234",
         )
         self.assertIn("John - Doe", str(worker))
         self.assertIn("Engineer", str(worker))
@@ -44,7 +44,7 @@ class WorkerModelTest(TestCase):
             first_name="Maria",
             last_name="Ivanova",
             position=self.position,
-            password="test1234"
+            password="test1234",
         )
         self.assertEqual(worker.email, "maria@example.com")
         self.assertEqual(worker.position.name, "Engineer")
@@ -59,7 +59,7 @@ class TeamModelTest(TestCase):
             first_name="Alice",
             last_name="Cooper",
             position=self.position,
-            password="pass1234"
+            password="pass1234",
         )
 
     def test_str_returns_name(self):
@@ -67,7 +67,9 @@ class TeamModelTest(TestCase):
         self.assertEqual(str(team), "QA Team")
 
     def test_workers_m2m_relationship(self):
-        team = Team.objects.create(name="Dev Team", description="Development team")
+        team = Team.objects.create(
+            name="Dev Team", description="Development team"
+        )
         team.workers.add(self.worker)
         self.assertIn(self.worker, team.workers.all())
 
@@ -82,9 +84,12 @@ class TaskModelTest(TestCase):
             first_name="John",
             last_name="Doe",
             position=self.position,
-            password="test1234"
+            password="test1234",
         )
-        self.team = Team.objects.create(name="Team A", description="Alpha team")
+        self.team = Team.objects.create(
+            name="Team A",
+            description="Alpha team"
+        )
         self.team.workers.add(self.worker)
 
     def test_create_task(self):

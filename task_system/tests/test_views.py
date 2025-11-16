@@ -109,19 +109,25 @@ class TaskCRUDTest(BaseViewTest):
             "team": self.team.id,
             "priority": Task.Priority.URGENT,
         }
-        response = self.client.post(reverse("task-update", args=[self.task.id]), data)
+        response = self.client.post(
+            reverse("task-update", args=[self.task.id]), data
+        )
         self.assertEqual(response.status_code, 302)
         self.task.refresh_from_db()
         self.assertEqual(self.task.name, "Updated Task")
 
     def test_task_delete_view(self):
-        response = self.client.post(reverse("task-delete", args=[self.task.id]))
+        response = self.client.post(
+            reverse("task-delete", args=[self.task.id])
+        )
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Task.objects.filter(id=self.task.id).exists())
 
     def test_mark_task_done(self):
         response = self.client.get(reverse("task-done", args=[self.task.id]))
-        self.assertRedirects(response, reverse("task-detail", args=[self.task.id]))
+        self.assertRedirects(
+            response, reverse("task-detail", args=[self.task.id])
+        )
         self.task.refresh_from_db()
         self.assertTrue(self.task.is_complete)
 
@@ -129,7 +135,10 @@ class TaskCRUDTest(BaseViewTest):
 class TeamCRUDTest(BaseViewTest):
     def setUp(self):
         super().setUp()
-        self.team = Team.objects.create(name="Team Alpha", description="For testing")
+        self.team = Team.objects.create(
+            name="Team Alpha",
+            description="For testing"
+        )
 
     def test_team_list_view(self):
         response = self.client.get(reverse("team-list"))
@@ -144,13 +153,17 @@ class TeamCRUDTest(BaseViewTest):
 
     def test_team_update_view(self):
         data = {"name": "Team Zulu", "description": "Updated"}
-        response = self.client.post(reverse("team-update", args=[self.team.id]), data)
+        response = self.client.post(
+            reverse("team-update", args=[self.team.id]), data
+        )
         self.assertEqual(response.status_code, 302)
         self.team.refresh_from_db()
         self.assertEqual(self.team.name, "Team Zulu")
 
     def test_team_delete_view(self):
-        response = self.client.post(reverse("team-delete", args=[self.team.id]))
+        response = self.client.post(
+            reverse("team-delete", args=[self.team.id])
+        )
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Team.objects.filter(id=self.team.id).exists())
 

@@ -6,9 +6,14 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.views.generic import CreateView
-
-from task_system.forms import TaskForm, TeamForm, WorkerUpdateForm, WorkerRegisterForm
+from task_system.forms import (
+    TaskForm,
+    TeamForm,
+    WorkerUpdateForm,
+    WorkerRegisterForm
+)
 from task_system.models import Worker, Task, TaskType, Position, Team
+
 
 @login_required
 def index(request: HttpRequest) -> HttpResponse:
@@ -50,10 +55,10 @@ class TaskDetailView(LoginRequiredMixin, generic.DetailView):
 class TaskCreateView(LoginRequiredMixin, generic.CreateView):
     model = Task
     form_class = TaskForm
-    template_name = 'task_system/task_form.html'
+    template_name = "task_system/task_form.html"
 
     def get_success_url(self):
-        return reverse_lazy('task-detail', args=[self.object.id])
+        return reverse_lazy("task-detail", args=[self.object.id])
 
 
 class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -61,13 +66,13 @@ class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
     form_class = TaskForm
 
     def get_success_url(self):
-        return reverse_lazy('task-detail', args=[self.object.id])
+        return reverse_lazy("task-detail", args=[self.object.id])
 
 
 class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Task
-    success_url = reverse_lazy('task-list')
-    template_name = 'task_system/task_delete.html'
+    success_url = reverse_lazy("task-list")
+    template_name = "task_system/task_delete.html"
 
 
 @login_required
@@ -75,7 +80,7 @@ def mark_task_done(request, pk):
     task = get_object_or_404(Task, pk=pk)
     task.is_complete = True
     task.save()
-    return redirect(reverse('task-detail', args=[task.id]))
+    return redirect(reverse("task-detail", args=[task.id]))
 
 
 class TeamListView(LoginRequiredMixin, generic.ListView):
@@ -86,12 +91,12 @@ class TeamListView(LoginRequiredMixin, generic.ListView):
 class TeamCreateView(LoginRequiredMixin, generic.CreateView):
     model = Team
     form_class = TeamForm
-    template_name = 'task_system/team_form.html'
+    template_name = "task_system/team_form.html"
 
 
 class TeamDetailView(LoginRequiredMixin, generic.DetailView):
     model = Team
-    success_url = reverse_lazy('team-list')
+    success_url = reverse_lazy("team-list")
     template_name = "task_system/team_detail.html"
 
 
@@ -100,7 +105,7 @@ class TeamUpdateView(LoginRequiredMixin, generic.UpdateView):
     form_class = TeamForm
 
     def get_success_url(self):
-        return reverse_lazy('team-detail', args=[self.object.id])
+        return reverse_lazy("team-detail", args=[self.object.id])
 
 
 class TeamDeleteView(LoginRequiredMixin, generic.DeleteView):
