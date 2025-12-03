@@ -64,8 +64,8 @@
       "is_superuser": true,
       "username": "admin",
       "email": "admin@task.com",
-      "first_name": "Олексій",
-      "last_name": "Адміненко",
+      "first_name": "Oleksii",
+      "last_name": "Adminenko",
       "is_staff": true,
       "is_active": true,
       "date_joined": "2025-11-15T18:00:00Z",
@@ -82,8 +82,8 @@
       "is_superuser": false,
       "username": "user1",
       "email": "user1@task.com",
-      "first_name": "Марія",
-      "last_name": "Іванова",
+      "first_name": "Maria",
+      "last_name": "Ivanova",
       "is_staff": false,
       "is_active": true,
       "date_joined": "2025-11-15T18:00:00Z",
@@ -98,7 +98,7 @@
     "pk": 1,
     "fields": {
       "name": "Development Team",
-      "description": "Головна команда розробки",
+      "description": "Main development team",
       "workers": [1, 2]
     }
   },
@@ -108,7 +108,7 @@
     "pk": 1,
     "fields": {
       "name": "Fix login bug",
-      "description": "Помилка при вході в систему",
+      "description": "Error when logging into the system",
       "deadline": "2025-10-25T12:00:00Z",
       "is_complete": true,
       "priority": "urgent",
@@ -122,7 +122,7 @@
     "pk": 2,
     "fields": {
       "name": "Add search feature",
-      "description": "Потрібно додати пошук по сайту",
+      "description": "Need to add site search functionality",
       "deadline": "2025-10-30T12:00:00Z",
       "is_complete": false,
       "priority": "high",
@@ -136,7 +136,7 @@
     "pk": 3,
     "fields": {
       "name": "Research new framework",
-      "description": "Вивчити новий фреймворк для проекту",
+      "description": "Study a new framework for the project",
       "deadline": "2025-11-05T12:00:00Z",
       "is_complete": true,
       "priority": "low",
@@ -149,7 +149,7 @@
     "pk": 4,
     "fields": {
       "name": "QA login flow",
-      "description": "Перевірити весь логін-флоу",
+      "description": "Check the entire login flow",
       "deadline": "2025-10-28T12:00:00Z",
       "is_complete": false,
       "priority": "high",
@@ -162,7 +162,7 @@
     "pk": 5,
     "fields": {
       "name": "Refactor dashboard",
-      "description": "Оптимізувати код дашборду",
+      "description": "Optimize the dashboard code",
       "deadline": "2025-11-01T12:00:00Z",
       "is_complete": true,
       "priority": "low",
@@ -175,7 +175,7 @@
     "pk": 6,
     "fields": {
       "name": "Design new logo",
-      "description": "Створити новий логотип для проекту",
+      "description": "Create a new project logo",
       "deadline": "2025-10-27T12:00:00Z",
       "is_complete": false,
       "priority": "high",
@@ -188,7 +188,7 @@
     "pk": 7,
     "fields": {
       "name": "Fix bug in payment",
-      "description": "Помилка при оплаті товару",
+      "description": "Error while processing payment",
       "deadline": "2025-10-26T12:00:00Z",
       "is_complete": true,
       "priority": "urgent",
@@ -201,7 +201,7 @@
     "pk": 8,
     "fields": {
       "name": "Implement notifications",
-      "description": "Додати push-повідомлення",
+      "description": "Add push notifications",
       "deadline": "2025-11-03T12:00:00Z",
       "is_complete": false,
       "priority": "high",
@@ -215,7 +215,7 @@
     "pk": 9,
     "fields": {
       "name": "Database optimization",
-      "description": "Оптимізувати запити до бази",
+      "description": "Optimize database queries",
       "deadline": "2025-11-04T12:00:00Z",
       "is_complete": true,
       "priority": "high",
@@ -229,7 +229,7 @@
     "pk": 10,
     "fields": {
       "name": "Frontend bug fixes",
-      "description": "Виправити дрібні баги на фронтенді",
+      "description": "Fix minor frontend bugs",
       "deadline": "2025-10-29T12:00:00Z",
       "is_complete": false,
       "priority": "low",
@@ -244,7 +244,7 @@
     "pk": 11,
     "fields": {
       "name": "Code Review: Search Feature",
-      "description": "Переглянути код пошуку перед мерджем у develop гілку.",
+      "description": "Review search feature code before merging into develop branch.",
       "deadline": "2025-11-01T15:00:00Z",
       "is_complete": false,
       "priority": "high",
@@ -258,7 +258,7 @@
     "pk": 12,
     "fields": {
       "name": "Create new landing page wireframe",
-      "description": "Створити чорновий макет (wireframe) нової цільової сторінки.",
+      "description": "Create the initial wireframe for the new landing page.",
       "deadline": "2025-11-10T10:00:00Z",
       "is_complete": false,
       "priority": "low",
@@ -271,7 +271,7 @@
     "pk": 13,
     "fields": {
       "name": "Performance testing on mobile",
-      "description": "Провести тестування швидкодії на мобільних пристроях.",
+      "description": "Conduct performance testing on mobile devices.",
       "deadline": "2025-11-07T14:30:00Z",
       "is_complete": false,
       "priority": "high",
@@ -285,7 +285,7 @@
     "pk": 14,
     "fields": {
       "name": "Setup Continuous Integration (CI)",
-      "description": "Налаштувати автоматизоване тестування на GitHub Actions.",
+      "description": "Configure automated testing on GitHub Actions.",
       "deadline": "2025-11-15T18:00:00Z",
       "is_complete": true,
       "priority": "urgent",
@@ -299,7 +299,7 @@
     "pk": 15,
     "fields": {
       "name": "Finalize User Model Fields",
-      "description": "Перевірити, чи всі необхідні поля (як-от position) додані до Worker моделі.",
+      "description": "Verify that all required fields (such as position) are added to the Worker model.",
       "deadline": "2025-11-16T23:59:59Z",
       "is_complete": false,
       "priority": "urgent",
