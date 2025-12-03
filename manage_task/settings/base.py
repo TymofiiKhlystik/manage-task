@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
 
-    # user apps
-    "task_system.apps.TaskSystemConfig",
+    "task_system",
 ]
 
 MIDDLEWARE = [
