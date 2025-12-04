@@ -1,4 +1,10 @@
-# REQUIRED ENVIRONMENT VARIABLES
-SECRET_KEY=put_your_very_long_and_secure_key_here
-DEBUG=True
-DATABASE_URL=postgres://user:password@host:port/dbname
+# database
+POSTGRES_DB=<db_name>
+POSTGRES_DB_PORT=<db_port>
+POSTGRES_USER=<db_user>
+POSTGRES_PASSWORD=<db_password>
+POSTGRES_HOST=<db_host>
+# django settings
+SECRET_KEY=<secret_key>
+DJANGO_SETTINGS_MODULE=<path_to_settings_file>
+RENDER_EXTERNAL_HOSTNAME=<domain>

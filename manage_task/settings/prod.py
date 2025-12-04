@@ -5,9 +5,7 @@ from .base import *
 DEBUG = False
 
 ALLOWED_HOSTS = []
-DATABASES = {
-    'default': {}
-}
+
 
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -26,5 +24,8 @@ DATABASES = {
         "PASSWORD": os.environ["POSTGRES_PASSWORD"],
         "HOST": os.environ["POSTGRES_HOST"],
         "PORT": int(os.environ["POSTGRES_DB_POST"]),
+        "OPTIONS": {
+           "sslmode": "require",
+       },
     }
 }
